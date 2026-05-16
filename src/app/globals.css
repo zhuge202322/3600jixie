@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  /* Themable tokens (space-separated RGB so Tailwind alpha modifiers work) */
+  --c-deep-rgb: 10 10 11;       /* #0A0A0B graphite */
+  --c-mid-rgb: 21 23 28;        /* #15171C carbon */
+  --c-accent-rgb: 255 212 0;    /* #FFD400 safety yellow */
+  --c-deep: rgb(var(--c-deep-rgb));
+  --c-mid: rgb(var(--c-mid-rgb));
+  --c-accent: rgb(var(--c-accent-rgb));
+}
+
+html,
+body {
+  background: var(--c-deep);
+  color: #E7E5E0;
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 200ms ease;
+}
+
+/* Sharp corners across the app — true industrial */
+* {
+  border-radius: 0 !important;
+}
+
+/* ── Hazard stripes (caution band) ────────────────────────── */
+.hazard {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--c-accent) 0 18px,
+    var(--c-deep) 18px 36px
+  );
+}
+
+.hazard-thin {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--c-accent) 0 8px,
+    var(--c-deep) 8px 16px
+  );
+}
+
+/* ── Engineering grid ─────────────────────────────────────── */
+.grid-mesh {
+  background-image:
+    linear-gradient(rgb(var(--c-accent-rgb) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-accent-rgb) / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.grid-mesh-light {
+  background-image:
+    linear-gradient(rgba(10, 10, 11, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 10, 11, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Panel-cut diagonal slabs ─────────────────────────────── */
+.cut-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 56px)); }
+.cut-tl { clip-path: polygon(0 56px, 100% 0, 100% 100%, 0 100%); }
+.cut-tr { clip-path: polygon(0 0, 100% 56px, 100% 100%, 0 100%); }
+.cut-br { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 56px), 0 100%); }
+.cut-corner-tr { clip-path: polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 0 100%); }
+.cut-corner-bl { clip-path: polygon(0 0, 100% 0, 100% 100%, 64px 100%, 0 calc(100% - 64px)); }
+
+/* ── Tick rule ────────────────────────────────────────────── */
+.tick-line {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgb(var(--c-accent-rgb) / 0.45) 0 1px,
+    transparent 1px 18px
+  );
+}
+
+/* ── Tag chip (engineering label) ─────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgb(var(--c-accent-rgb) / 0.5);
+  background: rgb(var(--c-accent-rgb) / 0.06);
+  color: var(--c-accent);
+  padding: 4px 10px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ── No-scrollbar ─────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Page scrollbar (yellow tick) ─────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--c-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--c-accent);
+  border: 2px solid var(--c-deep);
+}
+
+/* ── Big section heading helper ───────────────────────────── */
+.h-display {
+  font-family: Oswald, Rajdhani, Inter, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
