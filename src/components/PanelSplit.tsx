@@ -33,7 +33,7 @@ export default function PanelSplit({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`relative h-[420px] lg:h-[640px] ${reverse ? "lg:order-2" : ""}`}
+        className={`relative h-[420px] lg:h-[560px] ${reverse ? "lg:order-2" : ""}`}
       >
         <Image
           src={image}
@@ -42,10 +42,8 @@ export default function PanelSplit({
           sizes="(max-width:1024px) 100vw, 50vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 grid-mesh opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/30 to-ink/10" />
         <div
-          className={`absolute top-6 ${reverse ? "right-6" : "left-6"} border-2 border-gold bg-ink px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-gold`}
+          className={`absolute top-6 ${reverse ? "right-6" : "left-6"} bg-paper px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-divider shadow-sm`}
         >
           / {index}
         </div>
@@ -57,11 +55,10 @@ export default function PanelSplit({
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`relative flex h-[420px] flex-col justify-center bg-carbon px-8 py-10 lg:h-[640px] lg:px-16 ${
+        className={`relative flex h-[420px] flex-col justify-center bg-carbon px-8 py-10 lg:h-[560px] lg:px-16 ${
           reverse ? "lg:order-1" : ""
         }`}
       >
-        <div className="absolute inset-0 grid-mesh opacity-20" />
         <div className="relative">
           <span className="chip">{eyebrow}</span>
           <h2 className="mt-4 h-display text-4xl text-bone md:text-6xl">{title}</h2>
@@ -70,14 +67,14 @@ export default function PanelSplit({
             <ul className="mt-5 space-y-1.5">
               {bullets.map((b) => (
                 <li key={b} className="flex items-start gap-2 font-mono text-xs uppercase tracking-widest text-bone">
-                  <span className="mt-1 inline-block h-1 w-3 bg-gold" /> {b}
+                  <span className="mt-1 inline-block h-1 w-3 bg-divider" /> {b}
                 </li>
               ))}
             </ul>
           )}
           <Link
             href={ctaHref}
-            className="mt-8 inline-flex items-center gap-2 border-2 border-gold px-5 py-3 font-display text-sm font-bold uppercase tracking-widest text-gold hover:bg-gold hover:text-ink"
+            className="mt-8 inline-flex items-center gap-2 border-2 border-gold px-5 py-3 font-display text-sm font-bold uppercase tracking-widest text-gold hover:bg-gold hover:text-paper"
           >
             {ctaLabel} <ArrowRight size={14} />
           </Link>

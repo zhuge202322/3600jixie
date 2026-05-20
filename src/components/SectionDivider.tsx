@@ -8,19 +8,20 @@ export default function SectionDivider({
   rightLabel?: string;
 }) {
   return (
-    <div className="mx-auto flex max-w-[1400px] items-center gap-4 px-5 pt-20">
-      <span className="border border-gold px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-gold">
-        {index}
-      </span>
-      <span className="font-display text-sm font-bold uppercase tracking-[0.3em] text-bone">
-        {label}
-      </span>
-      <span className="h-px flex-1 tick-line" />
-      {rightLabel && (
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ash">
-          {rightLabel}
-        </span>
-      )}
+    <div className="mx-auto mt-24 max-w-[1400px] px-5">
+      <div className="flex items-end justify-between border-b-2 border-gray-200 pb-3">
+        <div className="flex items-end gap-4">
+          <span className="font-mono text-sm font-bold text-[#FFCC00]">{index}</span>
+          <h2 className="font-display text-2xl font-black uppercase tracking-widest text-[#1A3D8F] md:text-3xl" style={{ fontFamily: 'Impact, sans-serif' }}>
+            {label}
+          </h2>
+        </div>
+        {rightLabel && (
+          <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 sm:block">
+            {rightLabel}
+          </span>
+        )}
+      </div>
     </div>
   );
 }

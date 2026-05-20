@@ -5,27 +5,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Heavy industrial palette — themable via CSS vars
-        ink: "rgb(var(--c-deep-rgb) / <alpha-value>)",        // deep base
-        carbon: "rgb(var(--c-mid-rgb) / <alpha-value>)",      // mid panel
-        gold: "rgb(var(--c-accent-rgb) / <alpha-value>)",     // accent
-        // Static
+        bg: "rgb(var(--c-bg-rgb) / <alpha-value>)",
+        panel: "rgb(var(--c-panel-rgb) / <alpha-value>)",
+        ink: "rgb(var(--c-ink-rgb) / <alpha-value>)",
+        fg: "rgb(var(--c-fg-rgb) / <alpha-value>)",
+        muted: "rgb(var(--c-muted-rgb) / <alpha-value>)",
+        accent: "rgb(var(--c-accent-rgb) / <alpha-value>)",
+        divider: "rgb(var(--c-divider-rgb) / <alpha-value>)",
+        line: "rgb(var(--c-line-rgb) / <alpha-value>)",
+        // Keep these aliases for legacy pages
+        paper: "rgb(var(--c-bg-rgb) / <alpha-value>)",
+        carbon: "rgb(var(--c-ink-rgb) / <alpha-value>)",
+        bone: "rgb(var(--c-bg-rgb) / <alpha-value>)",
+        gold: "rgb(var(--c-accent-rgb) / <alpha-value>)",
+        ash: "rgb(var(--c-muted-rgb) / <alpha-value>)",
+        // Static legacy
         steel: "#1F232A",
         iron: "#2A2F38",
-        line: "#3A4049",
-        ash: "#9CA3AF",
-        bone: "#E7E5E0",
-        paper: "#F4F4F0",
-        goldDark: "#E6BE00",
+        goldDark: "#C58A35",
         signal: "#FF6B00",
-        brandRed: "#D7232A",
+        brandRed: "rgb(var(--c-divider-rgb) / <alpha-value>)",
         brandBlue: "#1A3D8F",
         rust: "rgb(var(--c-accent-rgb) / <alpha-value>)",
       },
       fontFamily: {
-        display: ["Oswald", "Rajdhani", "Inter", "sans-serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        // 全站统一中文黑体（依次回退）
+        sans: [
+          '"Microsoft YaHei"',
+          '"微软雅黑"',
+          "sans-serif",
+        ],
+        display: [
+          '"Microsoft YaHei"',
+          '"微软雅黑"',
+          "sans-serif",
+        ],
+        mono: [
+          '"Microsoft YaHei"',
+          '"微软雅黑"',
+          "sans-serif",
+        ],
       },
       letterSpacing: {
         widest2: "0.25em",

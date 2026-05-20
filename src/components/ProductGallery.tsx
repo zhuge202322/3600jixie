@@ -6,7 +6,7 @@ export default function ProductGallery({ images, alt }: { images: string[]; alt:
   const [active, setActive] = useState(0);
   return (
     <div>
-      <div className="relative aspect-[4/3] overflow-hidden border border-line/60 bg-carbon">
+      <div className="relative aspect-[4/3] overflow-hidden border border-line bg-carbon">
         <Image
           src={images[active]}
           alt={alt}
@@ -14,8 +14,7 @@ export default function ProductGallery({ images, alt }: { images: string[]; alt:
           sizes="(max-width:768px) 100vw, 50vw"
           className="object-cover"
         />
-        <div className="pointer-events-none absolute inset-0 grid-mesh opacity-25" />
-        <span className="absolute left-3 top-3 border border-gold bg-ink/80 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-gold">
+        <span className="absolute left-3 top-3 bg-paper px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-divider shadow-sm">
           IMG {String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
         </span>
       </div>
@@ -25,7 +24,7 @@ export default function ProductGallery({ images, alt }: { images: string[]; alt:
             key={i}
             onClick={() => setActive(i)}
             className={`relative aspect-[4/3] overflow-hidden border ${
-              i === active ? "border-gold" : "border-line/40"
+              i === active ? "border-gold" : "border-line"
             }`}
             aria-label={`thumbnail ${i + 1}`}
           >
