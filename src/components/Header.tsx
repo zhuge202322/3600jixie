@@ -115,13 +115,16 @@ export default function Header({ lang }: { lang: string }) {
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="grid h-9 w-9 place-items-center border border-gray-200 text-[#1A3D8F] lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-4 lg:hidden">
+          <LanguageSwitcher lang={lang} isMobile={true} />
+          <button
+            className="grid h-9 w-9 place-items-center border border-gray-200 text-[#1A3D8F]"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Products dropdown — wide mega menu */}

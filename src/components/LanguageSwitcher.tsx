@@ -15,7 +15,7 @@ const languages = [
   { code: "pl", name: "Polski" },
 ];
 
-export default function LanguageSwitcher({ lang }: { lang: string }) {
+export default function LanguageSwitcher({ lang, isMobile = false }: { lang: string, isMobile?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -29,15 +29,29 @@ export default function LanguageSwitcher({ lang }: { lang: string }) {
     router.push(newPathname || `/${code}`);
   };
 
+  // Flag icon mapping (simplified fallback using emojis or standard SVG icons can be used, here using text for simplicity)
+  const getFlag = (code: string) => {
+    const flags: Record<string, string> = {
+      en: "🇬🇧", vi: "🇻🇳", th: "🇹🇭", id: "🇮🇩", bn: "🇧🇩", fa: "🇮🇷", ar: "🇸🇦", tr: "🇹🇷", pl: "🇵🇱"
+    };
+    return flags[code] || "🌐";
+  };
+
   return (
     <div className="relative inline-block text-left z-50">
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-gray-900 hover:text-[#1A3D8F] transition"
       >
-        <Globe size={14} />
-        <span className="hidden xl:inline-block">{languages.find(l => l.code === lang)?.name || "Language"}</span>
-        <ChevronDown size={12} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        {isMobile ? (
+          <span className="text-xl">{getFlag(lang)}</span>
+        ) : (
+          <Globe size={14} />
+        )}
+        <span className={`${isMobile ? 'hidden' : 'hidden xl:inline-block'}`}>
+          {languages.find(l => l.code === lang)?.name || "Language"}
+        </span>
+        <ChevronDown size={12} className={`transition-transform ${isOpen ? 'rotate-180' : ''} ${isMobile ? 'hidden' : ''}`} />
       </button>
 
       {isOpen && (
