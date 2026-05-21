@@ -30,18 +30,13 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
 
   return (
     <section className="bg-white py-12 md:py-24 overflow-hidden">
-      <div className="flex flex-col gap-12 md:gap-24">
+      <div className="flex flex-col gap-12 md:gap-24 px-5 md:px-0">
         {articles.map((article, index) => (
-          <div key={article.id} className="relative w-full h-[800px] md:h-[600px] group cursor-pointer overflow-hidden">
-            {/* 
-              Background Container 
-              We use absolute positioning to overlap image and text.
-              Then we slice BOTH of them using complementary clip-paths.
-            */}
+          <div key={article.id} className="relative w-full flex flex-col md:block md:h-[600px] group cursor-pointer overflow-hidden border border-gray-100 md:border-none">
             
             {/* === IMAGE LAYER === */}
             <div 
-              className="absolute inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] max-md:[clip-path:polygon(0_0,100%_0,100%_45%,0_55%)] md:[clip-path:var(--clip-img)]"
+              className="relative h-[250px] sm:h-[350px] w-full md:absolute md:inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:[clip-path:var(--clip-img)]"
               style={{
                 '--clip-img': article.align === 'left' 
                   ? 'polygon(0 0, 60% 0, 45% 100%, 0% 100%)' 
@@ -61,7 +56,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
               </div>
 
               {/* Floating Number Tag (Pinned to Image) */}
-              <div className={`absolute top-10 ${article.align === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'} bg-[#E0A24A] px-4 py-2 z-20 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
+              <div className={`absolute top-6 md:top-10 ${article.align === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'} bg-[#E0A24A] px-4 py-2 z-20 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
                 <span className="text-white font-bold text-xs tracking-[0.3em] uppercase">
                   // {article.id} - {article.category.split('·')[0].trim()}
                 </span>
@@ -70,35 +65,35 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
 
             {/* === TEXT LAYER === */}
             <div 
-              className="absolute inset-0 bg-gray-50 z-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 max-md:[clip-path:polygon(0_54.5%,100%_44.5%,100%_100%,0_100%)] md:[clip-path:var(--clip-txt)]"
+              className="relative w-full bg-gray-50 z-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 md:absolute md:inset-0 md:[clip-path:var(--clip-txt)]"
               style={{
                 '--clip-txt': article.align === 'left' 
                   ? 'polygon(59.5% 0, 100% 0, 100% 100%, 44.5% 100%)' 
                   : 'polygon(0 0, 55.5% 0, 40.5% 100%, 0 100%)',
               } as React.CSSProperties}
             >
-              <div className={`absolute inset-0 flex items-end md:items-center ${article.align === 'left' ? 'md:justify-end md:pr-[5%]' : 'md:justify-start md:pl-[5%]'} p-6 pb-12 pt-[60%] md:pt-16 md:p-16`}>
-                <div className={`max-w-xl transition-all duration-700 ${article.align === 'left' ? 'md:group-hover:-translate-x-4' : 'md:group-hover:translate-x-4'}`}>
+              <div className={`relative flex flex-col items-start p-6 md:absolute md:inset-0 md:flex-row md:items-center ${article.align === 'left' ? 'md:justify-end md:pr-[5%]' : 'md:justify-start md:pl-[5%]'} md:p-16`}>
+                <div className={`w-full max-w-xl transition-all duration-700 ${article.align === 'left' ? 'md:group-hover:-translate-x-4' : 'md:group-hover:translate-x-4'}`}>
                   
                   {/* Category Tag */}
-                  <div className="inline-block border border-[#E0A24A] px-3 py-1 mb-6">
+                  <div className="inline-block border border-[#E0A24A] px-3 py-1 mb-4 md:mb-6">
                     <span className="text-[10px] font-bold text-[#E0A24A] tracking-[0.2em] uppercase">
                       {article.category}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1A3D8F] uppercase tracking-tight mb-6" style={{ fontFamily: 'Impact, sans-serif' }}>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1A3D8F] uppercase tracking-tight mb-4 md:mb-6" style={{ fontFamily: 'Impact, sans-serif' }}>
                     {article.title}
                   </h2>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed mb-8 text-sm md:text-base md:pr-10">
+                  <p className="text-gray-600 leading-relaxed mb-6 md:mb-8 text-sm md:text-base md:pr-10">
                     {article.description}
                   </p>
 
                   {/* Feature List */}
-                  <ul className="space-y-3 mb-10">
+                  <ul className="space-y-3 mb-8 md:mb-10">
                     {article.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-3 text-[11px] font-bold text-gray-800 tracking-[0.15em] uppercase">
                         <span className="w-3 h-1 bg-[#E0A24A]"></span>
