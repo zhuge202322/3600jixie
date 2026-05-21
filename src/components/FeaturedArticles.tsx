@@ -41,13 +41,12 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
             
             {/* === IMAGE LAYER === */}
             <div 
-              className="absolute inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              className="absolute inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] max-md:[clip-path:polygon(0_0,100%_0,100%_45%,0_55%)] md:[clip-path:var(--clip-img)]"
               style={{
-                // Slice the image: Left image keeps left part, Right image keeps right part
-                clipPath: article.align === 'left' 
-                  ? 'polygon(0 0, 60% 0, 45% 100%, 0% 100%)' // Keeps left
-                  : 'polygon(55% 0, 100% 0, 100% 100%, 40% 100%)', // Keeps right
-              }}
+                '--clip-img': article.align === 'left' 
+                  ? 'polygon(0 0, 60% 0, 45% 100%, 0% 100%)' 
+                  : 'polygon(55% 0, 100% 0, 100% 100%, 40% 100%)',
+              } as React.CSSProperties}
             >
               {/* Image wrapper for scale effect */}
               <div className="absolute inset-0 transition-transform duration-[1.5s] group-hover:scale-110">
@@ -62,7 +61,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
               </div>
 
               {/* Floating Number Tag (Pinned to Image) */}
-              <div className={`absolute top-10 ${article.align === 'left' ? 'left-10' : 'right-10'} bg-[#E0A24A] px-4 py-2 z-20 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
+              <div className={`absolute top-10 ${article.align === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'} bg-[#E0A24A] px-4 py-2 z-20 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
                 <span className="text-white font-bold text-xs tracking-[0.3em] uppercase">
                   // {article.id} - {article.category.split('·')[0].trim()}
                 </span>
@@ -71,16 +70,15 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
 
             {/* === TEXT LAYER === */}
             <div 
-              className="absolute inset-0 bg-gray-50 z-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100"
+              className="absolute inset-0 bg-gray-50 z-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 max-md:[clip-path:polygon(0_54.5%,100%_44.5%,100%_100%,0_100%)] md:[clip-path:var(--clip-txt)]"
               style={{
-                // Slice the text: Complementary to the image slice
-                clipPath: article.align === 'left' 
-                  ? 'polygon(59.5% 0, 100% 0, 100% 100%, 44.5% 100%)' // Keeps right
-                  : 'polygon(0 0, 55.5% 0, 40.5% 100%, 0 100%)', // Keeps left
-              }}
+                '--clip-txt': article.align === 'left' 
+                  ? 'polygon(59.5% 0, 100% 0, 100% 100%, 44.5% 100%)' 
+                  : 'polygon(0 0, 55.5% 0, 40.5% 100%, 0 100%)',
+              } as React.CSSProperties}
             >
-              <div className={`absolute inset-0 flex items-center ${article.align === 'left' ? 'justify-end pr-[5%]' : 'justify-start pl-[5%]'} p-8 md:p-16`}>
-                <div className={`max-w-xl transition-all duration-700 ${article.align === 'left' ? 'group-hover:-translate-x-4' : 'group-hover:translate-x-4'}`}>
+              <div className={`absolute inset-0 flex items-end md:items-center ${article.align === 'left' ? 'md:justify-end md:pr-[5%]' : 'md:justify-start md:pl-[5%]'} p-6 pb-12 pt-[60%] md:pt-16 md:p-16`}>
+                <div className={`max-w-xl transition-all duration-700 ${article.align === 'left' ? 'md:group-hover:-translate-x-4' : 'md:group-hover:translate-x-4'}`}>
                   
                   {/* Category Tag */}
                   <div className="inline-block border border-[#E0A24A] px-3 py-1 mb-6">

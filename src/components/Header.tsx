@@ -116,11 +116,11 @@ export default function Header({ lang }: { lang: string }) {
 
         {/* Mobile toggle */}
         <button
-          className="grid h-9 w-9 place-items-center border border-line text-bone lg:hidden"
+          className="grid h-9 w-9 place-items-center border border-gray-200 text-[#1A3D8F] lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="menu"
         >
-          {open ? <X size={16} /> : <Menu size={16} />}
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -178,25 +178,25 @@ export default function Header({ lang }: { lang: string }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="absolute inset-x-0 top-full border-t border-line bg-paper lg:hidden">
-          <div className="px-5 py-3">
+        <div className="absolute inset-x-0 top-full border-t border-gray-200 bg-white shadow-lg lg:hidden">
+          <div className="px-5 py-3 pb-6">
             {nav.map((n) => (
               <div key={n.href}>
                 <Link
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-line py-3 text-xs font-bold uppercase tracking-widest text-bone hover:text-gold"
+                  className="block border-b border-gray-100 py-3 text-xs font-bold uppercase tracking-widest text-[#1A3D8F] hover:text-[#FFCC00]"
                 >
                   {n.label}
                 </Link>
                 {n.type === "products" && (
-                  <div className="grid grid-cols-2 gap-2 border-b border-line py-3">
+                  <div className="grid grid-cols-2 gap-2 border-b border-gray-100 py-3">
                     {categories.slice(0, 6).map((c) => (
                       <Link
                         key={c.slug}
                         href={c.available ? `/${lang}/${c.slug}` : `/${lang}/contact`}
                         onClick={() => setOpen(false)}
-                        className="truncate border border-line px-2 py-2 text-[11px] font-bold uppercase tracking-wider text-bone hover:border-gold hover:text-gold"
+                        className="truncate border border-gray-200 px-2 py-2 text-[11px] font-bold uppercase tracking-wider text-gray-700 hover:border-[#FFCC00] hover:text-[#1A3D8F]"
                       >
                         {c.name}
                       </Link>
@@ -205,21 +205,21 @@ export default function Header({ lang }: { lang: string }) {
                 )}
               </div>
             ))}
-            <div className="mt-3 flex gap-2">
+            <div className="mt-4 flex gap-2">
               <Link
                 href={`/${lang}/contact`}
                 onClick={() => setOpen(false)}
-                className="flex-1 bg-gold px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-paper"
+                className="flex-1 bg-[#FFCC00] px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-[#1A3D8F]"
               >
                 {dict.requestQuote}
               </Link>
               <a
                 href={site.whatsappLink}
                 onClick={() => setOpen(false)}
-                className="grid h-11 w-11 place-items-center border border-gold text-gold"
+                className="grid h-11 w-11 place-items-center border border-[#FFCC00] text-[#1A3D8F]"
                 aria-label="WhatsApp"
               >
-                <MessageCircle size={16} />
+                <MessageCircle size={18} />
               </a>
             </div>
           </div>
