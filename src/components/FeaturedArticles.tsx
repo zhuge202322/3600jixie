@@ -56,7 +56,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
               </div>
 
               {/* Floating Number Tag (Pinned to Image) */}
-              <div className={`absolute top-6 md:top-10 ${article.align === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'} bg-[#E0A24A] px-4 py-2 z-20 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
+              <div className={`absolute top-6 md:top-10 ${article.align === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'} bg-[#E0A24A] px-4 py-2 z-30 shadow-xl transition-transform duration-500 group-hover:-translate-y-2`}>
                 <span className="text-white font-bold text-xs tracking-[0.3em] uppercase">
                   // {article.id} - {article.category.split('·')[0].trim()}
                 </span>
@@ -65,7 +65,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
 
             {/* === TEXT LAYER === */}
             <div 
-              className="relative w-full bg-gray-50 z-0 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 md:absolute md:inset-0 md:[clip-path:var(--clip-txt)]"
+              className="relative w-full bg-gray-50 z-20 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 md:absolute md:inset-0 md:[clip-path:var(--clip-txt)]"
               style={{
                 '--clip-txt': article.align === 'left' 
                   ? 'polygon(59.5% 0, 100% 0, 100% 100%, 44.5% 100%)' 
@@ -73,7 +73,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
               } as React.CSSProperties}
             >
               <div className={`relative flex flex-col items-start p-6 md:absolute md:inset-0 md:flex-row md:items-center ${article.align === 'left' ? 'md:justify-end md:pr-[5%]' : 'md:justify-start md:pl-[5%]'} md:p-16`}>
-                <div className={`w-full max-w-xl transition-all duration-700 ${article.align === 'left' ? 'md:group-hover:-translate-x-4' : 'md:group-hover:translate-x-4'}`}>
+                <div className={`w-full max-w-xl transition-all duration-700 z-20 ${article.align === 'left' ? 'md:group-hover:-translate-x-4' : 'md:group-hover:translate-x-4'}`}>
                   
                   {/* Category Tag */}
                   <div className="inline-block border border-[#E0A24A] px-3 py-1 mb-4 md:mb-6">
