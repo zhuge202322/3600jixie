@@ -36,7 +36,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
             
             {/* === IMAGE LAYER === */}
             <div 
-              className="relative h-[250px] sm:h-[350px] w-full md:absolute md:inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:[clip-path:var(--clip-img)]"
+              className="relative h-[250px] sm:h-[350px] md:h-full w-full md:absolute md:inset-0 z-10 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:[clip-path:var(--clip-img)]"
               style={{
                 '--clip-img': article.align === 'left' 
                   ? 'polygon(0 0, 60% 0, 45% 100%, 0% 100%)' 
@@ -65,7 +65,7 @@ export default function FeaturedArticles({ lang = "en" }: { lang?: string }) {
 
             {/* === TEXT LAYER === */}
             <div 
-              className="relative w-full bg-gray-50 z-20 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 md:absolute md:inset-0 md:[clip-path:var(--clip-txt)]"
+              className="relative w-full md:h-full bg-gray-50 z-20 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:bg-gray-100 md:absolute md:inset-0 md:[clip-path:var(--clip-txt)]"
               style={{
                 '--clip-txt': article.align === 'left' 
                   ? 'polygon(59.5% 0, 100% 0, 100% 100%, 44.5% 100%)' 
